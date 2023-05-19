@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+set -o errexit -o nounset -o pipefail
+
+export TF_ENVIRONMENT_CONF="$1"
+
+DIR="$(dirname "$BASH_SOURCE")"
+source "${DIR}/common-functions.sh"
+
+mv $TF_ENVIRONMENT_CONF/config.tf $TF_ENVIRONMENT_CONF/config.tf_bak
+
+docker_tf init
+docker_tf apply
+
+mv $TF_ENVIRONMENT_CONF/config.tf_bak $TF_ENVIRONMENT_CONF/config.tf
+docker_tf init
