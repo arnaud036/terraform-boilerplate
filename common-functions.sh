@@ -4,7 +4,7 @@ set -o errexit -o nounset -o pipefail
 function docker_tf () {
     local EXTRA_ARGS=""
     local REPO_ROOT="$( cd "$(dirname "$0")" ; pwd -P )"
-    local TF_VERSION="1.3.7"
+    local TF_VERSION="1.4.6"
     local TF_DOCKER_NAME="hashicorp/terraform:${TF_VERSION}"
     
     if [ $(docker image ls -q ${TF_DOCKER_NAME} | wc -l) -lt 1 ]; then
