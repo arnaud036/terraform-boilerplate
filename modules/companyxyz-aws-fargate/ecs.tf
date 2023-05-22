@@ -88,6 +88,6 @@ resource "aws_ecs_service" "default" {
             aws_security_group.default.id,
         ]
 
-        subnets = var.private_subnet_ids
+        subnets = var.subnet_ids
     }
 }
